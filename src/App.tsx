@@ -3,6 +3,7 @@ import './App.css'
 import {Routes, Route} from 'react-router'
 import { Home } from './pages/Home'
 import { Navbar } from './components/Navbar/Navbar'
+import {Footer} from './components/Footer/Footer'
 
 function App() {
   
@@ -14,6 +15,8 @@ function App() {
       <Route index element={<Home />} />
     
     </Routes>
+
+    <Footer />
      
     </>
   )
