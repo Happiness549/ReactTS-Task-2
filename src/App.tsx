@@ -6,9 +6,21 @@ import { Navbar } from './components/Navbar/Navbar'
 import {Footer} from './components/Footer/Footer'
 import { Search } from './components/Search/Search'
 
-function App() {
+interface LinkItemProps{
+  id: number;
+ title: string;
+ url: string; 
+ description: string;
+ tags: string
+}
 
-  
+//Add function
+//Delete function
+//Update function
+
+function App() {
+const [lists, setLists] = useState<LinkItemProps[]>([]);
+const [listValue, setListvalue] = useState('');
   
 
   return (
