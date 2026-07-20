@@ -1,9 +1,11 @@
 import React from 'react'
 import { Input } from '../Inputs/Input'
+import { Text } from '../Text/Text'
 
 export const LinkForm:React.FC = () => {
   return (
     <div>
+        <Text variant='h2'>Add New Link</Text>
         <Input
             label='Title'
             placeholder='Enter title'
@@ -36,13 +38,6 @@ export const LinkForm:React.FC = () => {
             onChange={() => {}}
         />
 
-        <Input 
-            label='Tags'
-            placeholder='Enter title'
-            type='text'
-            value=''
-            onChange={() => {}}
-        />
         
     </div>
   )
