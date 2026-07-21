@@ -7,7 +7,7 @@ import { Navbar } from './components/Navbar/Navbar'
 import {Footer} from './components/Footer/Footer'
 import { Search } from './components/Search/Search'
 import { LinkForm } from './components/LinkForm/LinkForm'
-
+import { LinkList } from './components/LinkForm/LinkList'
 
 
 
@@ -24,7 +24,8 @@ const [lists, setLists] = useState<Link[]>([]);
     <Navbar />
     <Search />
     <LinkForm />
-    
+    <LinkList linkList={lists}/>
+
     <Routes>
       <Route index element={<Home />} />
     </Routes>
