@@ -1,17 +1,20 @@
 import React from 'react'
+import type { Link } from '../../types/Link'
+import { Text } from '../Text/Text';
 
-export interface LinkCardProps{
- id: number;
- title: string;
- url: string; 
- description: string;
- tags: string
+interface CardProps{
+  list: Link;
 }
 
-export const LinkCard: React.FC<LinkCardProps> = ({id, title, url, descriptyion, tags}) => {
+export const LinkCard:React.FC<CardProps> = ({list}) => {
   return (
     <div>
-        
+      <div>
+        <Text variant={'h2'}>{list.title}</Text>
+        <Text variant={'span'}>{list.description}</Text>
+        <Text variant={'span'}>{list.url}</Text>
+        <Text variant={'span'}>{list.tags}</Text>
+      </div>
     </div>
   )
 }

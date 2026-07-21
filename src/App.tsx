@@ -24,6 +24,7 @@ const [lists, setLists] = useState<Link[]>([]);
     <Navbar />
     <Search />
     <LinkForm />
+    
     <Routes>
       <Route index element={<Home />} />
     </Routes>
