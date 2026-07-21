@@ -6,7 +6,7 @@ interface LinkItemProps{
     linkList:  Link[];
 }
 
-export const LinkList:React.FC<LinkItemProps> = ({linkList}: LinkItemProps) => {
+export const LinkList:React.FC<LinkItemProps> = ({linkList}) => {
   return (
     <div>
         {linkList.map((list) =>(
