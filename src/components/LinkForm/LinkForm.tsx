@@ -1,11 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Input } from '../Inputs/Input'
 import { Text } from '../Text/Text'
 import styles from './Link.module.css'
 import Button from '../Button/Button'
+import type { Link } from '../../types/Link'
 
 
-export const LinkForm:React.FC = () => {
+interface LinkFormProps{
+  onSave: (link: Link) => void;
+}
+
+export const LinkForm: React.FC<LinkFormProps>= ({onSave }) => {
+
+  const [title, setTitle] = useState('');
+   const [url, setUrl] = useState('');
+    const [description, setDescription] = useState('');
+     const [tags, setTags] = useState('');
+
+     const handleSave = () => {
+      const newLink: Link = {
+        id: Date.now(),  
+        title, 
+        url, 
+        description, 
+        tags
+      }
+      onSave(newLink);
+
+      setTitle('');
+      setUrl('');
+      setDescription('');
+      setTags('');
+     }
   
   return (
     <div className={styles['form-container']}>
@@ -13,20 +39,19 @@ export const LinkForm:React.FC = () => {
         <div className={styles['input-container']}>
 
          <Input
-            className=''
             label='Title'
             placeholder='Enter title'
             type='text'
-            value=''
-            onChange={() => {}}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
         />
         
         <Input
             label='url'
             placeholder='Enter url'
             type='text'
-            value=''
-            onChange={() => {}}
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
         />
         </div>
     
@@ -37,8 +62,8 @@ export const LinkForm:React.FC = () => {
             label='Description'
             placeholder='Enter description'
              type="text"  
-            value=''
-            onChange={() => {}}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
            
           /> 
   
@@ -47,13 +72,13 @@ export const LinkForm:React.FC = () => {
             label='Tags'
             placeholder='e.g programming'
             type='text'
-            value=''
-            onChange={() => {}}
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
         />
 
     </div>
 
-     <Button text={'Add Link'}/>
+     <Button text={'Add Link'} onClick={handleSave}/>
   
     </div>
   )

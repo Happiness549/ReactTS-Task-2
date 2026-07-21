@@ -13,9 +13,11 @@ import { LinkList } from './components/LinkForm/LinkList'
 
 
 function App() {
-const [lists, setLists] = useState<Link[]>([]);
+const [links, setLinks] = useState<Link[]>([]);
 
-//Add function
+const handleAdd =(newLink: Link) => {
+  setLinks([...links, newLink])
+}
 //Delete function
 //Update function
 
@@ -23,8 +25,8 @@ const [lists, setLists] = useState<Link[]>([]);
     <>
     <Navbar />
     <Search />
-    <LinkForm />
-    <LinkList linkList={lists}/>
+    <LinkForm onSave={handleAdd}/>
+    <LinkList linkList={links}/>
 
     <Routes>
       <Route index element={<Home />} />

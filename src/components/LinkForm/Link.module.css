@@ -22,7 +22,7 @@
     border: 1px solid #014421;
     height: 29px;
     border-radius: 5px;
-    cursor: pointer;
+    
 }
 label{
     display: block;
@@ -47,7 +47,6 @@ input::placeholder{
     width: 420px;
     margin-right: 50px;
     border-radius: 5px;
-    cursor: pointer;
     gap: 20px;
 
 }
