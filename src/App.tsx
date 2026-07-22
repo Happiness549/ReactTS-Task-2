@@ -18,7 +18,10 @@ const [links, setLinks] = useState<Link[]>([]);
 const handleAdd =(newLink: Link) => {
   setLinks([...links, newLink])
 }
-//Delete function
+
+const handleDelete =(id:number):void =>{
+  setLinks((prevLinks) => prevLinks.filter(link=> link.id !== id))
+}
 //Update function
 
   return (
