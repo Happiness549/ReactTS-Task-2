@@ -48,7 +48,27 @@ input::placeholder{
     margin-right: 50px;
     border-radius: 5px;
     gap: 20px;
-
+}
+.card-container{
+    display: flex; 
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #0b251e, #134e4a);
+    color: yellowgreen;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    height: 200px;
+    width: 450px;
+    box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease
+    
 }
 
+.card-container:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
 
+.card{
+
+
+}

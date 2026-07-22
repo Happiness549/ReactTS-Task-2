@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Link } from '../../types/Link'
 import { Text } from '../Text/Text';
+import styles from './Link.module.css'
 
 interface CardProps{
   list: Link;
@@ -8,12 +9,15 @@ interface CardProps{
 
 export const LinkCard:React.FC<CardProps> = ({list}) => {
   return (
-    <div>
-      <div>
+    <div className={styles['card-container']} >
+      <div className={styles['card']}>
         <Text variant={'h2'}>{list.title}</Text>
-        <Text variant={'span'}>{list.description}</Text>
-        <Text variant={'span'}>{list.url}</Text>
-        <Text variant={'span'}>{list.tags}</Text>
+        <Text variant={'p'}>{list.description}</Text>
+        <Text variant={'p'}>{list.url}</Text>
+        <Text variant={'p'}>{list.tags}</Text>
+      </div>
+      <div>
+         
       </div>
     </div>
   )
