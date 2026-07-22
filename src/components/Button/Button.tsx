@@ -3,7 +3,7 @@ import button from './Button.module.css'
 
 interface Props  {
     text: string | number;
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
     style?: React.CSSProperties;
     className?: string; 
 }

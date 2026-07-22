@@ -6,10 +6,11 @@ import Button from '../Button/Button';
 
 interface CardProps{
   list: Link;
+  onDelete: (id:number) => void;
   
 }
 
-export const LinkCard:React.FC<CardProps> = ({list}) => {
+export const LinkCard:React.FC<CardProps> = ({list, onDelete}) => {
 
 
   return (
@@ -21,7 +22,8 @@ export const LinkCard:React.FC<CardProps> = ({list}) => {
         <Text variant={'p'}>{list.tags}</Text>
       </div>
       <div className={styles['button-container']}>
-       
+        <Button text={'Delete'} onClick={() =>onDelete(list.id)}/>
+        <Button text={'Add Link'} />
       </div>
     </div>
   )

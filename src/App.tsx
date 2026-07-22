@@ -14,14 +14,16 @@ import { LinkList } from './components/LinkForm/LinkList'
 
 function App() {
 const [links, setLinks] = useState<Link[]>([]);
+const [editLinks, setEditLinks] = useState<Link | null>(null);
 
 const handleAdd =(newLink: Link) => {
-  setLinks([...links, newLink])
+  setLinks([...links, newLink]);
 }
 
-const handleDelete =(id:number):void =>{
-  setLinks((prevLinks) => prevLinks.filter(link=> link.id !== id))
-}
+const handleDelete =(id:number) =>{
+  setLinks(links.filter((link)=>
+  link.id !== id));
+};
 //Update function
 
   return (
@@ -29,7 +31,7 @@ const handleDelete =(id:number):void =>{
     <Navbar />
     <Search />
     <LinkForm onSave={handleAdd}/>
-    <LinkList linkList={links}/>
+    <LinkList linkList={links} onDelete={handleDelete}/>
 
     <Routes>
       <Route index element={<Home />} />
