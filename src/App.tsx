@@ -24,13 +24,16 @@ const handleDelete =(id:number) =>{
   setLinks(links.filter((link)=>
   link.id !== id));
 };
-//Update function
+ 
+const handleEdit= (link: Link) => {
+  setEditLinks(link);
+}
 
   return (
     <>
     <Navbar />
     <Search />
-    <LinkForm onSave={handleAdd}/>
+    <LinkForm onSave={handleAdd} />
     <LinkList linkList={links} onDelete={handleDelete}/>
 
     <Routes>
