@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Link } from '../../types/Link'
 import { LinkCard } from './LinkCard';
-import Button from '../Button/Button';
+
 
 interface LinkItemProps{
     linkList:  Link[];

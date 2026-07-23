@@ -1,4 +1,4 @@
-import React, { type ChangeEvent, type CSSProperties } from 'react'
+import React, { type ChangeEvent } from 'react'
 
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement>{
     label: string;

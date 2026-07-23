@@ -1,4 +1,4 @@
-import React from 'react'
+
 import styles from './Search.module.css'
 import { Text } from '../Text/Text'
 import searchIcon from '../../assets/searchIcon.png'

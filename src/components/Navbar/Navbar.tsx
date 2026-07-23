@@ -1,4 +1,4 @@
-import React from 'react'
+
 import logo from '../../assets/logo.png'
 import styles from './Nabar.module.css'
 import { Text } from '../Text/Text'
