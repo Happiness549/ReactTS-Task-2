@@ -15,6 +15,7 @@ import { LinkList } from './components/LinkForm/LinkList'
 function App() {
 const [links, setLinks] = useState<Link[]>([]);
 const [editLinks, setEditLinks] = useState<Link | null>(null);
+const [search, setSearch] = useState('');
 
 const handleAdd =(newLink: Link) => {
   setLinks([...links, newLink]);
@@ -29,10 +30,14 @@ const handleEdit= (link: Link) => {
   setEditLinks(link);
 }
 
+const handleSearch = (text: string) => {
+  setSearch(text);
+};
+
   return (
     <>
     <Navbar />
-    <Search />
+    <Search onSearch = {handleSearch}/>
     <LinkForm onSave={handleAdd} />
     <LinkList linkList={links} onDelete={handleDelete}/>
 
