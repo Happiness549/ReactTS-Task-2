@@ -9,7 +9,7 @@ export const Navbar = () => {
     <nav>
         <div className={styles['navbar-container']}>
             <img src={logo} alt="App Logo" className={styles['logo']} />
-            <Text variant={'h2'} className={styles['navbar-text']}> Links Vault </Text>
+            <Text variant={'h2'} className='navbar-text'> Links Vault </Text>
 
 
         </div>

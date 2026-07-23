@@ -1,4 +1,4 @@
-export interface Link{
+export interface LinkItem {
     id: number;
     title: string;
     url: string; 

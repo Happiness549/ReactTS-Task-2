@@ -3,7 +3,7 @@
     width: 100%;
     height: 300px;
     padding: 20px;
-    
+    margin-left: 40px;
 
 }
 .form-container input{
@@ -59,9 +59,12 @@ input::placeholder{
     width: 450px;
     box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
     transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     
 }
+    
+    
+
 
 .card-container:hover{
     transform: translateY(-8px);
@@ -80,4 +83,13 @@ padding: 10px;
     display: flex;
     margin-left: 150px;
     gap: 19px;
+}
+
+
+.card-items{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-left: 40px;
 }

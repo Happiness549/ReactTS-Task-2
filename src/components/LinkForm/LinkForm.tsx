@@ -3,11 +3,11 @@ import { Input } from '../Inputs/Input'
 import { Text } from '../Text/Text'
 import styles from './Link.module.css'
 import Button from '../Button/Button'
-import type { Link } from '../../types/Link'
+import type { LinkItem } from '../../types/Link'
 
 
 interface LinkFormProps{
-  onSave: (link: Link) => void;
+  onSave: (link: LinkItem) => void;
 }
 
 export const LinkForm: React.FC<LinkFormProps>= ({onSave }) => {
@@ -20,7 +20,7 @@ export const LinkForm: React.FC<LinkFormProps>= ({onSave }) => {
   
 
      const handleSave = () => {
-      const newLink: Link = {
+      const newLink: LinkItem = {
         id: Date.now(),  
         title, 
         url, 
@@ -37,7 +37,7 @@ export const LinkForm: React.FC<LinkFormProps>= ({onSave }) => {
   
   return (
     <div className={styles['form-container']}>
-        <Text variant='h2'>Add New Link</Text>
+        <Text variant='h2'>Add New Link </Text>
         <div className={styles['input-container']}>
 
          <Input

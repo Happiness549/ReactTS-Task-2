@@ -9,6 +9,7 @@ nav{
     display: flex;
     color: greenyellow;
     gap: 100px;
+    
 }
 .logo{
     width: 100px;
@@ -16,6 +17,5 @@ nav{
     border-radius: 50px;
 }
 .navbar-text{
-    background-color: white;
-
+    margin-top: 90px; 
 }
