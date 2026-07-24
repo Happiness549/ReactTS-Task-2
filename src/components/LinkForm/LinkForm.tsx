@@ -13,10 +13,10 @@ interface LinkFormProps{
 export const LinkForm: React.FC<LinkFormProps>= ({onSave }) => {
 
   const [title, setTitle] = useState('');
-   const [url, setUrl] = useState('');
-    const [description, setDescription] = useState('');
-     const [tags, setTags] = useState('');
-
+  const [url, setUrl] = useState('');
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState('');
+  
   
 
      const handleSave = () => {
@@ -27,12 +27,31 @@ export const LinkForm: React.FC<LinkFormProps>= ({onSave }) => {
         description, 
         tags
       }
-      onSave(newLink);
-
+      if(validate()){
+         onSave(newLink);
       setTitle('');
       setUrl('');
       setDescription('');
       setTags('');
+
+      }
+     
+     }
+
+     const validate =():boolean =>{
+      if(!title){
+        alert('Please provide title!!')
+        return false
+      }
+      if(!url){
+        alert('Please provide url!!')
+        return false
+      }
+      if(!description){
+        alert('Please provide description!!')
+        return false
+      }
+      return true
      }
   
   return (

@@ -11,6 +11,7 @@ import { LinkList } from './components/LinkForm/LinkList'
 
 
 
+
 function App() {
 const [links, setLinks] = useState<LinkItem[]>(() => {
   try {
@@ -21,7 +22,7 @@ const [links, setLinks] = useState<LinkItem[]>(() => {
   }
 });
 
-const [editLinks, setEditLinks] = useState<LinkItem | null>(null);
+const [editLinks, setEditLinks] = useState<LinkItem []| null>(null);
 const [search, setSearch] = useState('');
 
 const handleAdd = (newLink: LinkItem) => {
@@ -32,7 +33,7 @@ const handleAdd = (newLink: LinkItem) => {
     
     // 2. Save the updated array directly to localStorage
     localStorage.setItem("links", JSON.stringify(updatedLinks));
-    
+   
     return updatedLinks;
   });
 };
@@ -42,13 +43,19 @@ const handleDelete =(id:number) =>{
   const updatedList = storageLinks.filter((link)=>
   link.id !== id) 
   setLinks(updatedList);
-
   localStorage.setItem("links", JSON.stringify(updatedList));
+
 };
  
-const handleEdit= (link: LinkItem) => {
-  setEditLinks(link);
+const handleEdit= (index:number, link: LinkItem) => {
+  setEditLinks((prevLinks) => {
+    const next = Array.isArray(prevLinks) ? [...prevLinks] : [];
+    next[index] = link;
+    return next
+  });
+
 }
+
 
 const handleSearch = (text: string) => {
   setSearch(text);
@@ -61,7 +68,7 @@ const handleSearch = (text: string) => {
     <>
     <Navbar />
     <Search />
-    <LinkForm onSave={handleAdd} />
+    <LinkForm onSave={handleAdd}  />
     <LinkList linkList={links} onDelete={handleDelete}/>
 
   

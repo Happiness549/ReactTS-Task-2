@@ -18,7 +18,7 @@ export const Input: React.FC<InputFieldProps> = ({label, type, placeholder, valu
                 placeholder={placeholder} 
                 value={value}
                 onChange={onChange}
-                style={styles}/>
+                style={styles} required />
     </div>
   )
 }
