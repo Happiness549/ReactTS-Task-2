@@ -23,7 +23,7 @@ const [links, setLinks] = useState<LinkItem[]>(() => {
 });
 
 const [editLinks, setEditLinks] = useState<LinkItem []| null>(null);
-const [search, setSearch] = useState('');
+const [searchQuery, setSearchQuery] = useState('');
 
 const handleAdd = (newLink: LinkItem) => {
   setLinks((prevLinks) => {
@@ -58,7 +58,7 @@ const handleEdit= (index:number, link: LinkItem) => {
 
 
 const handleSearch = (text: string) => {
-  setSearch(text);
+  setSearchQuery(text);
 };
 
 
