@@ -1,32 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Search.module.css'
 import { Text } from '../Text/Text'
 import searchIcon from '../../assets/searchIcon.png'
+import type {LinkItem} from '../../types/Link'
 
     
-   interface SearchQueryProps{
-      value: string;
-      onChange: (value: string) => void;
-      placeholder?: string;
+   interface SearchComponentProps{
+      search:string;
+      onSearch : (newValue :string) => void;
+      filteredResults : LinkItem[];
    }     
 
 
-export const Searchbar: React.FC<SearchQueryProps> = ({value, onChange, placeholder='Enter a link'}) => {
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value);
+export const Searchbar: React.FC<SearchComponentProps> = ({search,onSearch,filteredResults} ) => {
   
   return (
     <div className={styles['search-bar']}>
         <Text variant='span' style={{color: 'rgb(20, 20, 20)', padding: 10}}>Search</Text>
         <input
-          value={value}
-          placeholder={placeholder}
-          onChange={handleChange}
           type="text"
           className={styles['search-input']}
+          value={search}
+          onChange={(newValue) => {
+            onSearch(newValue.target.value)
+          }}
         />
         <img src={searchIcon} alt='Search icon on search bar' className={styles['search-icon']}/>
+        <div>
+          {!filteredResults &&(
+           <Text variant={'p'}>Please type something to begin searching.</Text>
+          )};
+
+          {filteredResults &&(
+            <ul>
+              {filteredResults.map((item)=>(
+                <li key={item.id}>{item.title}</li>
+              ))}
+            </ul>
+
+          )}
+
+        </div>
     </div>
   )
-}}
+}

@@ -25,6 +25,16 @@ const [links, setLinks] = useState<LinkItem[]>(() => {
 const [editLinks, setEditLinks] = useState<LinkItem []| null>(null);
 const [searchQuery, setSearchQuery] = useState('');
 
+const onSearch =(newvalue :string) =>{
+  setSearchQuery(newvalue)
+  const updatedLinks = links.filter((linkItem) => (linkItem.title === searchQuery || 
+    linkItem.description === searchQuery || 
+    linkItem.tags === searchQuery || 
+    linkItem.url === searchQuery))
+    setLinks(updatedLinks)
+}
+
+
 const handleAdd = (newLink: LinkItem) => {
   setLinks((prevLinks) => {
     // 1. Fallback to an empty array if prevLinks is missing
@@ -57,21 +67,13 @@ const handleEdit= (index:number, link: LinkItem) => {
 }
 
 
-const handleSearch = (text: string) => {
-  setSearchQuery(text);
-};
-
-
-
 
   return (
     <>
     <Navbar />
-    <Search />
-    <LinkForm onSave={handleAdd}  />
+    <Search search={searchQuery} onSearch={onSearch} filteredResults={links}/>
+    <LinkForm handleAdd={handleAdd}  />
     <LinkList linkList={links} onDelete={handleDelete}/>
-
-  
     <Footer />
      
     </>

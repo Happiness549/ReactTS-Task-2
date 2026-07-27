@@ -2,7 +2,7 @@ import React from 'react'
 import button from './Button.module.css'
 
 interface Props  {
-    text: string | number;
+    text: string;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     style?: React.CSSProperties;
     className?: string; 

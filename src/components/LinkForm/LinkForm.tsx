@@ -7,10 +7,10 @@ import type { LinkItem } from '../../types/Link'
 
 
 interface LinkFormProps{
-  onSave: (link: LinkItem) => void;
+  handleAdd: (link: LinkItem) => void;
 }
 
-export const LinkForm: React.FC<LinkFormProps>= ({onSave }) => {
+export const LinkForm: React.FC<LinkFormProps>= ({handleAdd }) => {
 
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
@@ -28,7 +28,7 @@ export const LinkForm: React.FC<LinkFormProps>= ({onSave }) => {
         tags
       }
       if(validate()){
-         onSave(newLink);
+         handleAdd(newLink);
       setTitle('');
       setUrl('');
       setDescription('');
