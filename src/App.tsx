@@ -11,6 +11,7 @@ import { LinkList } from './components/LinkForm/LinkList'
 
 
 
+
 function App() {
 const [links, setLinks] = useState<LinkItem[]>(() => {
   try {
@@ -21,8 +22,18 @@ const [links, setLinks] = useState<LinkItem[]>(() => {
   }
 });
 
-const [editLinks, setEditLinks] = useState<LinkItem | null>(null);
-const [search, setSearch] = useState('');
+const [editLinks, setEditLinks] = useState<LinkItem []| null>(null);
+const [searchQuery, setSearchQuery] = useState('');
+
+const onSearch =(newvalue :string) =>{
+  setSearchQuery(newvalue)
+  const updatedLinks = links.filter((linkItem) => (linkItem.title === searchQuery || 
+    linkItem.description === searchQuery || 
+    linkItem.tags === searchQuery || 
+    linkItem.url === searchQuery))
+    setLinks(updatedLinks)
+}
+
 
 const handleAdd = (newLink: LinkItem) => {
   setLinks((prevLinks) => {
@@ -32,39 +43,38 @@ const handleAdd = (newLink: LinkItem) => {
     
     
     localStorage.setItem("links", JSON.stringify(updatedLinks));
-    
+   
     return updatedLinks;
   });
 };
 
 const handleDelete =(id:number) =>{
-   const storageLinks : LinkItem[]  =JSON.parse(localStorage.getItem("links")!)
-   const updatedList = storageLinks.filter((link)=>
-   link.id !== id) 
-   setLinks(updatedList);
+  const storageLinks : LinkItem[]  =JSON.parse(localStorage.getItem("links")!)
+  const updatedList = storageLinks.filter((link)=>
+  link.id !== id) 
+  setLinks(updatedList);
 
   localStorage.setItem("links", JSON.stringify(updatedList));
+
 };
  
-const handleEdit= (link: LinkItem) => {
-  setEditLinks(link);
+const handleEdit= (index:number, link: LinkItem) => {
+  setEditLinks((prevLinks) => {
+    const next = Array.isArray(prevLinks) ? [...prevLinks] : [];
+    next[index] = link;
+    return next
+  });
+
 }
-
-const handleSearch = (text: string) => {
-  setSearch(text);
-};
-
 
 
 
   return (
     <>
     <Navbar />
-    <Search />
-    <LinkForm onSave={handleAdd} />
+    <Search search={searchQuery} onSearch={onSearch} filteredResults={links}/>
+    <LinkForm handleAdd={handleAdd}  />
     <LinkList linkList={links} onDelete={handleDelete}/>
-
-  
     <Footer />
      
     </>
