@@ -17,7 +17,7 @@ const [links, setLinks] = useState<LinkItem[]>(() => {
     const saved = localStorage.getItem("links");
     return saved ? JSON.parse(saved) : [];
   } catch {
-    return []; // Fallback if JSON parsing fails
+    return [];
   }
 });
 
@@ -26,11 +26,11 @@ const [search, setSearch] = useState('');
 
 const handleAdd = (newLink: LinkItem) => {
   setLinks((prevLinks) => {
-    // 1. Fallback to an empty array if prevLinks is missing
+    
     const currentLinks = Array.isArray(prevLinks) ? prevLinks : [];
     const updatedLinks = [...currentLinks, newLink];
     
-    // 2. Save the updated array directly to localStorage
+    
     localStorage.setItem("links", JSON.stringify(updatedLinks));
     
     return updatedLinks;
@@ -38,10 +38,10 @@ const handleAdd = (newLink: LinkItem) => {
 };
 
 const handleDelete =(id:number) =>{
-  const storageLinks : LinkItem[]  =JSON.parse(localStorage.getItem("links")!)
-  const updatedList = storageLinks.filter((link)=>
-  link.id !== id) 
-  setLinks(updatedList);
+   const storageLinks : LinkItem[]  =JSON.parse(localStorage.getItem("links")!)
+   const updatedList = storageLinks.filter((link)=>
+   link.id !== id) 
+   setLinks(updatedList);
 
   localStorage.setItem("links", JSON.stringify(updatedList));
 };
