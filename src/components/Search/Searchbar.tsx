@@ -8,11 +8,11 @@ import type {LinkItem} from '../../types/Link'
    interface SearchComponentProps{
       search:string;
       onSearch : (newValue :string) => void;
-      filteredResults : LinkItem[];
+      
    }     
 
 
-export const Searchbar: React.FC<SearchComponentProps> = ({search,onSearch,filteredResults} ) => {
+export const Searchbar: React.FC<SearchComponentProps> = ({search,onSearch} ) => {
   
   return (
     <div className={styles['search-bar']}>
@@ -27,19 +27,6 @@ export const Searchbar: React.FC<SearchComponentProps> = ({search,onSearch,filte
         />
         <img src={searchIcon} alt='Search icon on search bar' className={styles['search-icon']}/>
         <div>
-          {!filteredResults &&(
-           <Text variant={'p'}>Please type something to begin searching.</Text>
-          )};
-
-          {filteredResults &&(
-            <ul>
-              {filteredResults.map((item)=>(
-                <li key={item.id}>{item.title}</li>
-              ))}
-            </ul>
-
-          )}
-
         </div>
     </div>
   )

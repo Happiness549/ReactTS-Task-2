@@ -22,17 +22,30 @@ const [links, setLinks] = useState<LinkItem[]>(() => {
   }
 });
 
-const [editLinks, setEditLinks] = useState<LinkItem []| null>(null);
+const [editLinks, setEditLinks] = useState<LinkItem | null>(null);
+
+const handleEdit = (link: LinkItem) => {
+  setEditLinks(link);
+}
+
+const handleUpdate=(updatedLink: LinkItem)=>{
+  setLinks(links.map((link)=>
+  link.id === updatedLink.id? updatedLink : link));
+
+}
 const [searchQuery, setSearchQuery] = useState('');
 
 const onSearch =(newvalue :string) =>{
   setSearchQuery(newvalue)
-  const updatedLinks = links.filter((linkItem) => (linkItem.title === searchQuery || 
-    linkItem.description === searchQuery || 
-    linkItem.tags === searchQuery || 
-    linkItem.url === searchQuery))
-    setLinks(updatedLinks)
+ 
 }
+
+const filteredLinks = links.filter((link) =>
+    link.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    link.url.toLowerCase().includes(searchQuery.toLowerCase()) ||
+     link.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      link.tags.toLowerCase().includes(searchQuery.toLowerCase()) 
+  );
 
 
 const handleAdd = (newLink: LinkItem) => {
@@ -53,28 +66,20 @@ const handleDelete =(id:number) =>{
   const updatedList = storageLinks.filter((link)=>
   link.id !== id) 
   setLinks(updatedList);
-
   localStorage.setItem("links", JSON.stringify(updatedList));
-
 };
- 
-const handleEdit= (index:number, link: LinkItem) => {
-  setEditLinks((prevLinks) => {
-    const next = Array.isArray(prevLinks) ? [...prevLinks] : [];
-    next[index] = link;
-    return next
-  });
 
-}
+
+
 
 
 
   return (
     <>
     <Navbar />
-    <Search search={searchQuery} onSearch={onSearch} filteredResults={links}/>
-    <LinkForm handleAdd={handleAdd}  />
-    <LinkList linkList={links} onDelete={handleDelete}/>
+    <Search search={searchQuery} onSearch={onSearch} />
+    <LinkForm handleAdd={handleAdd}  handleUpdate={handleUpdate} editLink={editLinks}/>
+    <LinkList linkList={filteredLinks} onDelete={handleDelete} handleEdit={handleEdit}/>
     <Footer />
      
     </>

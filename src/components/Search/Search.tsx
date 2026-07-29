@@ -6,17 +6,18 @@ import type {LinkItem} from '../../types/Link'
 interface SearchProps{
       search: string;
       onSearch : (newValue :string) => void;
-      filteredResults : LinkItem[] 
+      
 }     
 
 
-export const Search: React.FC<SearchProps> = ({search,onSearch,filteredResults} :SearchProps) => {
+export const Search: React.FC<SearchProps> = ({search,onSearch}) => {
 
 
   return (
     <div className={styles['search-container']}>
       <div className={styles['searchbar-container']}>
-        <Searchbar search={search} onSearch={onSearch} filteredResults={filteredResults}/>
+        <Searchbar search={search} onSearch={onSearch} />
+         
       </div>
     </div>
   )
