@@ -25,7 +25,7 @@ export const Input: React.FC<InputFieldProps> = ({label, type, placeholder, valu
         style={styles}
         required
       />
-      {error && <span className="error-message">{errorMessage}</span>}
+      {error && <span className='error-message'>{errorMessage}</span>}
     </div>
   )
 }

@@ -63,11 +63,11 @@ input::placeholder{
     
 }
     
-  .eeror{
+  .error{
     border: 2px solid red;
   }  
-
-.eeror-message{
+  
+.error-message{
     color: red;
     font-size: 12px;
     margin-top: 4px;
