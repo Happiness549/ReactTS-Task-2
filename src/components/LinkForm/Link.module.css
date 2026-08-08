@@ -1,9 +1,13 @@
 .form-container{
     color: #014421;
-    width: 100%;
-    height: 300px;
-    padding: 20px;
-    margin-left: 40px;
+    width: 40%;
+    height: 400px;
+    padding: 55px;
+    margin-left: 30%;
+    background-color: white;
+    box-shadow: 0 5px 20px rgb(0,0,0, 0.8);
+    margin-top: 45px;
+    border-radius: 15px;
 
 }
 .form-container input{
@@ -17,13 +21,13 @@
     
 }
 
-.input-container input{
-    
+ .input-container input{
     border: 1px solid #014421;
     height: 29px;
     border-radius: 5px;
+
     
-}
+} 
 label{
     display: block;
     
@@ -34,20 +38,18 @@ input::placeholder{
     color: green
 }
 
-.input-input{
-    
-    
-}
+
 
 .input-input input{
     border: 1px solid #014421;
+    gap: 20px;
     display: flex;
     flex-direction: column;
     height: 35px;
     width: 420px;
     margin-right: 50px;
     border-radius: 5px;
-    gap: 20px;
+    
 }
 .card-container{
     
@@ -99,3 +101,4 @@ padding: 10px;
     flex-wrap: wrap;
     margin-left: 40px;
 }
+
